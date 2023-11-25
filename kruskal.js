@@ -1,19 +1,19 @@
 const kruskal = (G) => {
-    let U // disjoint sets
-    let E // edges' weights sorted ascendent
-    let T = {
-        V: G.V,
-        A: []
-    }
-    let k = 1
-    let i = 1
+  let U; // disjoint sets
+  let E; // edges' weights sorted ascendent
+  let T = {
+    V: G.V,
+    A: [],
+  };
+  let k = 1;
+  let i = 1;
 
-    while(k < G.V.length) {
-        // TODO: complete
-        break
-    }
+  while (k < G.V.length) {
+    // TODO: complete
+    break;
+  }
 
-    return T
-}
+  return T;
+};
 
-export default kruskal
+export default kruskal;

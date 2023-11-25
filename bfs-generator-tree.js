@@ -1,52 +1,52 @@
 /**
  * T is a generator tree of G.
- * 
+ *
  * ```
  *  G = {
  *      V: [v1, v2, v3]
  *      A: [a12, a23]
  *  }
  * ```
- * 
+ *
  * @param {*} G graph G = (V, A)
  * @param {*} v vertex v (v ∈ V)
  * @returns T
  */
 const bfsGeneratorTree = (G, v) => {
-    let Q = []
-    let T = {
-        V: G.V,
-        A: []
-    }
-    let estado = {}
+  let Q = [];
+  let T = {
+    V: G.V,
+    A: [],
+  };
+  let estado = {};
 
-    for (let i = 0; i < G.V.length; i++) {
-        estado[G.V[i]] = 0
-    }
+  for (let i = 0; i < G.V.length; i++) {
+    estado[G.V[i]] = 0;
+  }
 
-    estado[v] = 1
-    Q.push(v)
+  estado[v] = 1;
+  Q.push(v);
 
-    while(Q.length !== 0) {
-        let w = Q.at(0)
-        let edgesThatIncludeW = G.A.filter(a => a.includes(w))
-        let vertecesNextToW = edgesThatIncludeW.flat().filter(e => e !== w)
+  while (Q.length !== 0) {
+    let w = Q.at(0);
+    let edgesThatIncludeW = G.A.filter((a) => a.includes(w));
+    let vertecesNextToW = edgesThatIncludeW.flat().filter((e) => e !== w);
 
-        for (let i = 0; i < vertecesNextToW.length ; i++) {
-            let u = vertecesNextToW[i]
+    for (let i = 0; i < vertecesNextToW.length; i++) {
+      let u = vertecesNextToW[i];
 
-            if (estado[u] === 0) {
-                Q.push(u)
-                estado[u] = 1
-                T.A.push([w, u])
-            }
-        }
-
-        Q.shift()
+      if (estado[u] === 0) {
+        Q.push(u);
+        estado[u] = 1;
+        T.A.push([w, u]);
+      }
     }
 
-    return T
-}
+    Q.shift();
+  }
+
+  return T;
+};
 
 // TODO: move to a test
 // G = {
@@ -59,4 +59,4 @@ const bfsGeneratorTree = (G, v) => {
 // const res = bfsGeneratorTree(G, v)
 // console.log(res.A, res.V)
 
-export default bfsGeneratorTree
+export default bfsGeneratorTree;
